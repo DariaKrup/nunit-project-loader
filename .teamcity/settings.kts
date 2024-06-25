@@ -3,7 +3,7 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.DotnetMsBuildStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetMsBuild
 import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetRestore
-import jetbrains.buildServer.configs.kotlin.buildSteps.nunit
+import jetbrains.buildServer.configs.kotlin.buildSteps.nunitConsole
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 
@@ -62,7 +62,7 @@ object id1NUnitStepForDslDotCover : BuildType({
             version = DotnetMsBuildStep.MSBuildVersion.CrossPlatform
             param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
         }
-        nunit {
+        nunitConsole {
             name = "NUnit: 1st dll"
             id = "NUnit_1st_dll"
             nunitPath = "%teamcity.tool.NUnit.Console.3.17.0%"
@@ -108,7 +108,7 @@ object id2NUnitStepsDotCoverDocker : BuildType({
             logging = DotnetMsBuildStep.Verbosity.Normal
             param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
         }
-        nunit {
+        nunitConsole {
             name = "NUnit"
             id = "NUnit"
             nunitPath = "%teamcity.tool.NUnit.Console.3.17.0%"
@@ -117,7 +117,7 @@ object id2NUnitStepsDotCoverDocker : BuildType({
                 toolPath = "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%"
             }
         }
-        nunit {
+        nunitConsole {
             name = "NUnit Second Lib"
             id = "NUnit_2_dll"
             nunitPath = "%teamcity.tool.NUnit.Console.3.17.0%"
@@ -162,14 +162,14 @@ object TwoNUnitSteps2dlls : BuildType({
             logging = DotnetMsBuildStep.Verbosity.Normal
             param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
         }
-        nunit {
+        nunitConsole {
             name = "NUnit"
             id = "NUnit"
             nunitPath = "%teamcity.tool.NUnit.Console.3.17.0%"
             includeTests = """bin\Debug\net20\test-lib-1.dll"""
             param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
         }
-        nunit {
+        nunitConsole {
             name = "NUnit Second Lib"
             id = "NUnit_2_dll"
             nunitPath = "%teamcity.tool.NUnit.Console.3.17.0%"
