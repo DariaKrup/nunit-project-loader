@@ -57,6 +57,12 @@ changeBuildType(RelativeId("2NUnitStepsDotCoverDocker")) {
     steps {
         update<NUnitConsoleStep>(3) {
             clearConditions()
+            coverage = dotcover {
+                toolPath = "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%"
+                assemblyFilters = ""
+                attributeFilters = ""
+                args = ""
+            }
             param("plugin.docker.imagePlatform", "windows")
             param("plugin.docker.imageId", "mcr.microsoft.com/dotnet/framework/sdk:3.5")
         }
