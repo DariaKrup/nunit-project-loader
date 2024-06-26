@@ -17,7 +17,7 @@ changeBuildType(RelativeId("2NUnitStepsDotCoverDocker")) {
     check(name == "2 NUnit steps: dotCover, Docker") {
         "Unexpected name: '$name'"
     }
-    name = "✔️ 2 NUnit steps: dotCover, Docker"
+    name = "✔️ 2 NUnit steps: dotCover, Docker (.Net framework, Windows)"
 
     expectSteps {
         dotnetRestore {
