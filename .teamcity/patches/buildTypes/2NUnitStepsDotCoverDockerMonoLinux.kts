@@ -46,6 +46,8 @@ create(DslContext.projectId, BuildType({
             coverage = dotcover {
                 toolPath = "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%"
             }
+            param("plugin.docker.imagePlatform", "linux")
+            param("plugin.docker.imageId", "mono:latest")
         }
         nunitConsole {
             name = "NUnit Second Lib"
