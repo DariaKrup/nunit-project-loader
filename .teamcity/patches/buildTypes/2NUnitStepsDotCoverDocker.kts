@@ -57,8 +57,8 @@ changeBuildType(RelativeId("2NUnitStepsDotCoverDocker")) {
     steps {
         update<NUnitConsoleStep>(3) {
             clearConditions()
-            param("plugin.docker.imagePlatform", "")
-            param("plugin.docker.imageId", "")
+            param("plugin.docker.imagePlatform", "windows")
+            param("plugin.docker.imageId", "mcr.microsoft.com/dotnet/framework/sdk:3.5")
         }
     }
 }
