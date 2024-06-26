@@ -53,6 +53,7 @@ changeBuildType(RelativeId("2NUnitStepsDotCoverDocker")) {
         update<NUnitConsoleStep>(3) {
             clearConditions()
             param("plugin.docker.imagePlatform", "")
+            param("plugin.docker.imageId", "")
         }
     }
 }
