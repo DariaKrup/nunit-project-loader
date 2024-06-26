@@ -53,9 +53,9 @@ create(DslContext.projectId, BuildType({
             nunitPath = "%teamcity.tool.NUnit.Console.3.17.0%"
             includeTests = """bin\Debug\net20\test-lib-2.dll"""
             reduceTestFeedback = true
-            param("plugin.docker.imagePlatform", "windows")
+            param("plugin.docker.imagePlatform", "linux")
             param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
-            param("plugin.docker.imageId", "mcr.microsoft.com/dotnet/framework/sdk:3.5")
+            param("plugin.docker.imageId", "mono:latest")
         }
     }
 
