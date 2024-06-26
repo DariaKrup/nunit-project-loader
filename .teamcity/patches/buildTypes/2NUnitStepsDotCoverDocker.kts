@@ -14,6 +14,11 @@ To apply the patch, change the buildType with id = '2NUnitStepsDotCoverDocker'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("2NUnitStepsDotCoverDocker")) {
+    check(name == "2 NUnit steps: dotCover, Docker") {
+        "Unexpected name: '$name'"
+    }
+    name = "✔️ 2 NUnit steps: dotCover, Docker"
+
     expectSteps {
         dotnetRestore {
             name = "Restore .sln"
