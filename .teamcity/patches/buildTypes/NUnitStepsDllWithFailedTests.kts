@@ -50,7 +50,10 @@ create(DslContext.projectId, BuildType({
             name = "NUnit Second Lib"
             id = "NUnit_2_dll"
             nunitPath = "%teamcity.tool.NUnit.Console.3.17.0%"
-            includeTests = """bin\Debug\net20\test-lib-2.dll"""
+            includeTests = """
+                bin\Debug\net20\test-lib-1.dll
+                bin\Debug\net20\test-lib-2.dll
+            """.trimIndent()
             reduceTestFeedback = true
             useProjectFile = true
             param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
