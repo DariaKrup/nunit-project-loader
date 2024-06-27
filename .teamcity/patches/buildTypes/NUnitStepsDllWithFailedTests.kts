@@ -41,6 +41,7 @@ create(DslContext.projectId, BuildType({
         nunitConsole {
             name = "NUnit"
             id = "NUnit"
+            enabled = false
             nunitPath = "%teamcity.tool.NUnit.Console.3.17.0%"
             includeTests = """bin\Debug\net20\test-lib-1.dll"""
             param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
