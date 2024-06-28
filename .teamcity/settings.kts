@@ -265,6 +265,10 @@ object id2NUnitStepsDotCoverDockerMonoLinux : BuildType({
 
 object BuildFromNUnitMetaRunner : BuildType({
     name = "Build from NUnit Meta Runner"
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
 })
 
 object BuildFromTemplate : BuildType({
