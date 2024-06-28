@@ -45,6 +45,7 @@ project {
     buildType(TwoNUnitSteps2dlls)
     buildType(id2NUnitStepsDotCoverDocker)
     buildType(id1NUnitStepForAllDlls)
+    buildType(id1NUnitStepForAllFields)
 
     template(TemplateNUnit)
 }
@@ -53,6 +54,12 @@ object id1NUnitStepForAllDlls : BuildType({
     templates(TemplateNUnit)
     id("1NUnitStepForAllDlls")
     name = "✔️ 1 NUnit step for all dlls"
+})
+
+object id1NUnitStepForAllFields : BuildType({
+    templates(TemplateNUnit)
+    id("1NUnitStepForAllFields")
+    name = "✔️ 1 NUnit step for all fields"
 })
 
 object id1NUnitStepForDslDotCover : BuildType({
