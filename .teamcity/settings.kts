@@ -269,6 +269,16 @@ object BuildFromNUnitMetaRunner : BuildType({
     vcs {
         root(DslContext.settingsRoot)
     }
+
+    steps {
+        step {
+            id = "NUnitRunnerProject_NewRunnerNUnitProjectLoader_1NUnitStepForAllDlls"
+            type = "NUnitRunnerProject_NewRunnerNUnitProjectLoader_1NUnitStepForAllDlls"
+            executionMode = BuildStep.ExecutionMode.DEFAULT
+            param("passphrase", "credentialsJSON:50e897e1-a348-4260-a026-00d14d21d5fc")
+            param("teamcity.step.phase", "")
+        }
+    }
 })
 
 object BuildFromTemplate : BuildType({
