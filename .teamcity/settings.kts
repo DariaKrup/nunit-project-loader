@@ -60,6 +60,28 @@ object id1NUnitStepForAllFields : BuildType({
     templates(TemplateNUnit)
     id("1NUnitStepForAllFields")
     name = "✔️ 1 NUnit step for all fields"
+
+    steps {
+        nunitConsole {
+            name = "NUnit: dlls"
+            id = "NUnit_1st_dll"
+            workingDir = "src"
+            nunitPath = "%teamcity.tool.NUnit.Console.3.17.0%"
+            includeTests = """bin\Debug\net20\test-*.dll"""
+            excludeTests = "Fixture1"
+            includeCategories = "A,B"
+            excludeCategories = "C"
+            reduceTestFeedback = true
+            useProjectFile = true
+            args = "--framework=net"
+            configFile = "build.cake"
+            coverage = dotcover {
+                toolPath = "%teamcity.tool.JetBrains.dotCover.CommandLineTools.bundled%"
+            }
+            dockerImage = "mono:latest"
+            dockerImagePlatform = NUnitConsoleStep.ImagePlatform.Linux
+        }
+    }
 })
 
 object id1NUnitStepForDslDotCover : BuildType({
