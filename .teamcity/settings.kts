@@ -265,6 +265,19 @@ object id2NUnitStepsDotCoverDockerMonoLinux : BuildType({
 object BuildFromTemplate : BuildType({
     templates(TemplateNUnit)
     name = "Build_From_Template"
+
+    steps {
+        nunitConsole {
+            name = "NUnit: dlls"
+            id = "NUnit_1st_dll"
+            nunitPath = "%teamcity.tool.NUnit.Console.3.15.0%"
+            includeTests = """bin\Debug\net20\test-*.dll"""
+            useProjectFile = true
+            coverage = dotcover {
+                toolPath = "%teamcity.tool.JetBrains.dotCover.CommandLineTools.bundled%"
+            }
+        }
+    }
 })
 
 object NUnitStepsDllWithFailedTests : BuildType({
