@@ -77,16 +77,6 @@ object id1NUnitStepForAllDlls : BuildType({
                 toolPath = "%teamcity.tool.JetBrains.dotCover.CommandLineTools.bundled%"
             }
         }
-        nunitConsole {
-            name = "NUnit: dlls (1)"
-            id = "NUnit_1st_dll_NEW"
-            nunitPath = "%teamcity.tool.NUnit.Console.3.17.0%"
-            includeTests = """bin\Debug\net20\test-*.dll"""
-            useProjectFile = true
-            coverage = dotcover {
-                toolPath = "%teamcity.tool.JetBrains.dotCover.CommandLineTools.bundled%"
-            }
-        }
     }
 
     triggers {
