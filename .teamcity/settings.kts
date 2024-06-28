@@ -80,6 +80,8 @@ object id1NUnitStepForAllFields : BuildType({
             }
             dockerImage = "mono:latest"
             dockerImagePlatform = NUnitConsoleStep.ImagePlatform.Linux
+            dockerPull = true
+            dockerRunParameters = """--e "ARG=g""""
         }
     }
 })
