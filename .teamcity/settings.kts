@@ -264,7 +264,7 @@ object id2NUnitStepsDotCoverDockerMonoLinux : BuildType({
 
 object BuildFromTemplate : BuildType({
     templates(TemplateNUnit)
-    name = "Build_From_Template"
+    name = "Build from NUnit Template"
 
     steps {
         nunitConsole {
