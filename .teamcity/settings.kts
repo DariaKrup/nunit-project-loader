@@ -37,6 +37,7 @@ project {
     vcsRoot(HttpsGithubComNunitNunitProjectLoaderGitRefsHeadsMain)
 
     buildType(NUnitStepsDllWithFailedTests)
+    buildType(BuildFromTemplate)
     buildType(id2NUnitStepsDotCoverDockerMonoLinux)
     buildType(id1NUnitStepForDslDotCover)
     buildType(id1NUnitStepWithExclusionRule)
@@ -259,6 +260,11 @@ object id2NUnitStepsDotCoverDockerMonoLinux : BuildType({
         perfmon {
         }
     }
+})
+
+object BuildFromTemplate : BuildType({
+    templates(TemplateNUnit)
+    name = "Build_From_Template"
 })
 
 object NUnitStepsDllWithFailedTests : BuildType({
