@@ -41,6 +41,7 @@ project {
     buildType(id2NUnitStepsDotCoverDockerMonoLinux)
     buildType(id1NUnitStepForDslDotCover)
     buildType(id1NUnitStepWithExclusionRule)
+    buildType(BuildFromNUnitMetaRunner)
     buildType(TwoNUnitSteps2dlls)
     buildType(id2NUnitStepsDotCoverDocker)
     buildType(id1NUnitStepForAllDlls)
@@ -260,6 +261,10 @@ object id2NUnitStepsDotCoverDockerMonoLinux : BuildType({
         perfmon {
         }
     }
+})
+
+object BuildFromNUnitMetaRunner : BuildType({
+    name = "Build from NUnit Meta Runner"
 })
 
 object BuildFromTemplate : BuildType({
