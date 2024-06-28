@@ -43,51 +43,14 @@ project {
     buildType(TwoNUnitSteps2dlls)
     buildType(id2NUnitStepsDotCoverDocker)
     buildType(id1NUnitStepForAllDlls)
+
+    template(TemplateNUnit)
 }
 
 object id1NUnitStepForAllDlls : BuildType({
+    templates(TemplateNUnit)
     id("1NUnitStepForAllDlls")
     name = "✔️ 1 NUnit step for all dlls"
-
-    vcs {
-        root(DslContext.settingsRoot)
-    }
-
-    steps {
-        dotnetRestore {
-            name = "Restore .sln"
-            id = "Restore_sln"
-            projects = "nunit-project-loader.sln"
-            param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
-        }
-        dotnetMsBuild {
-            name = "msbuild project"
-            id = "msbuild_project"
-            projects = "nunit-project-loader.sln"
-            version = DotnetMsBuildStep.MSBuildVersion.CrossPlatform
-            param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
-        }
-        nunitConsole {
-            name = "NUnit: dlls"
-            id = "NUnit_1st_dll"
-            nunitPath = "%teamcity.tool.NUnit.Console.3.17.0%"
-            includeTests = """bin\Debug\net20\test-*.dll"""
-            useProjectFile = true
-            coverage = dotcover {
-                toolPath = "%teamcity.tool.JetBrains.dotCover.CommandLineTools.bundled%"
-            }
-        }
-    }
-
-    triggers {
-        vcs {
-        }
-    }
-
-    features {
-        perfmon {
-        }
-    }
 })
 
 object id1NUnitStepForDslDotCover : BuildType({
@@ -400,6 +363,52 @@ object TwoNUnitSteps2dlls : BuildType({
 
     features {
         perfmon {
+        }
+    }
+})
+
+object TemplateNUnit : Template({
+    name = "Template_NUnit"
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        dotnetRestore {
+            name = "Restore .sln"
+            id = "Restore_sln"
+            projects = "nunit-project-loader.sln"
+            param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
+        }
+        dotnetMsBuild {
+            name = "msbuild project"
+            id = "msbuild_project"
+            projects = "nunit-project-loader.sln"
+            version = DotnetMsBuildStep.MSBuildVersion.CrossPlatform
+            param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
+        }
+        nunitConsole {
+            name = "NUnit: dlls"
+            id = "NUnit_1st_dll"
+            nunitPath = "%teamcity.tool.NUnit.Console.3.17.0%"
+            includeTests = """bin\Debug\net20\test-*.dll"""
+            useProjectFile = true
+            coverage = dotcover {
+                toolPath = "%teamcity.tool.JetBrains.dotCover.CommandLineTools.bundled%"
+            }
+        }
+    }
+
+    triggers {
+        vcs {
+            id = "TRIGGER_1"
+        }
+    }
+
+    features {
+        perfmon {
+            id = "BUILD_EXT_1"
         }
     }
 })
