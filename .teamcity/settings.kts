@@ -2,6 +2,7 @@ import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.DotnetMsBuildStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.NUnitConsoleStep
+import jetbrains.buildServer.configs.kotlin.buildSteps.dotCover
 import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetMsBuild
 import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetRestore
 import jetbrains.buildServer.configs.kotlin.buildSteps.nunitConsole
@@ -54,6 +55,13 @@ object id1NUnitStepForAllDlls : BuildType({
     templates(TemplateNUnit)
     id("1NUnitStepForAllDlls")
     name = "✔️ 1 NUnit step for all dlls"
+
+    steps {
+        dotCover {
+            name = "dotCover"
+            id = "dotCover"
+        }
+    }
 })
 
 object id1NUnitStepForAllFields : BuildType({
