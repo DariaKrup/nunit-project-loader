@@ -1,5 +1,7 @@
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildFeatures.pullRequests
 import jetbrains.buildServer.configs.kotlin.buildSteps.DotnetMsBuildStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.NUnitConsoleStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.dotCover
@@ -234,6 +236,15 @@ object id2NUnitStepsDotCoverDocker : BuildType({
     features {
         perfmon {
         }
+        pullRequests {
+            vcsRootExtId = "${DslContext.settingsRoot.id}"
+            provider = github {
+                authType = token {
+                    token = "credentialsJSON:3c3ff2ee-925a-4336-94d9-55fcb56575d9"
+                }
+                filterAuthorRole = PullRequests.GitHubRoleFilter.MEMBER
+            }
+        }
     }
 })
 
@@ -302,7 +313,7 @@ object BuildFromNUnitMetaRunner : BuildType({
             id = "NUnitRunnerProject_NewRunnerNUnitProjectLoader_1NUnitStepForAllDlls"
             type = "NUnitRunnerProject_NewRunnerNUnitProjectLoader_1NUnitStepForAllDlls"
             executionMode = BuildStep.ExecutionMode.DEFAULT
-            param("passphrase", "cksab6f74c3783cae7b767c884f20a160f6OFz3B7fr6LM7U8p4+ae+FQ==")
+            param("passphrase", "Martin")
             param("teamcity.step.phase", "")
         }
     }
