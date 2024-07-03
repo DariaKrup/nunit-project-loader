@@ -275,8 +275,6 @@ object id2NUnitStepsDotCoverDockerMonoLinux : BuildType({
             nunitPath = "%teamcity.tool.NUnit.Console.3.17.0%"
             includeTests = """bin\Debug\net20\test-lib-1.dll"""
             args = "--framework=mono"
-            coverage = dotcover {
-            }
             dockerImage = "mono:latest"
             dockerImagePlatform = NUnitConsoleStep.ImagePlatform.Linux
         }
