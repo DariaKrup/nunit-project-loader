@@ -1,7 +1,9 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.PullRequests
+import jetbrains.buildServer.configs.kotlin.buildFeatures.XmlReport
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildFeatures.pullRequests
+import jetbrains.buildServer.configs.kotlin.buildFeatures.xmlReport
 import jetbrains.buildServer.configs.kotlin.buildSteps.DotnetMsBuildStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.NUnitConsoleStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.dotCover
@@ -296,6 +298,10 @@ object id2NUnitStepsDotCoverDockerMonoLinux : BuildType({
 
     features {
         perfmon {
+        }
+        xmlReport {
+            reportType = XmlReport.XmlReportType.NUNIT
+            rules = "+:**/*"
         }
     }
 })
