@@ -274,6 +274,7 @@ object id2NUnitStepsDotCoverDockerMonoLinux : BuildType({
             id = "NUnit"
             nunitPath = "%teamcity.tool.NUnit.Console.3.17.0%"
             includeTests = """bin\Debug\net20\test-lib-1.dll"""
+            args = "--framework=mono"
             coverage = dotcover {
             }
             dockerImage = "mono:latest"
@@ -313,7 +314,7 @@ object BuildFromNUnitMetaRunner : BuildType({
             id = "NUnitRunnerProject_NewRunnerNUnitProjectLoader_1NUnitStepForAllDlls"
             type = "NUnitRunnerProject_NewRunnerNUnitProjectLoader_1NUnitStepForAllDlls"
             executionMode = BuildStep.ExecutionMode.DEFAULT
-            param("passphrase", "Martin")
+            param("passphrase", "credentialsJSON:c105b264-504e-4afe-bdb3-3b934c11e6f6")
             param("teamcity.step.phase", "")
         }
     }
