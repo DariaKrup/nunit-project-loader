@@ -272,7 +272,6 @@ object id2NUnitStepsDotCoverDockerMonoLinux : BuildType({
         nunitConsole {
             name = "NUnit"
             id = "NUnit"
-            workingDir = "src"
             nunitPath = "%teamcity.tool.NUnit.Console.3.17.0%"
             includeTests = """bin\Debug\net20\test-lib-1.dll"""
             args = "--framework=mono"
