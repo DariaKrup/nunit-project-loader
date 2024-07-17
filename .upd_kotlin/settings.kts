@@ -2,6 +2,7 @@ import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.powerShell
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
+import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 
 /*
 The settings script is an entry point for defining a TeamCity
@@ -30,6 +31,8 @@ version = "2024.03"
 project {
 
     buildType(Build)
+
+    subProject(DotNetTestsSamples)
 }
 
 object Build : BuildType({
@@ -58,4 +61,40 @@ object Build : BuildType({
         perfmon {
         }
     }
+})
+
+
+object DotNetTestsSamples : Project({
+    name = "DotNetTestsSamples"
+
+    vcsRoot(DotNetTestsSamples_HttpsGithubComChubatovatigerDotnettestssamplesGitRefsHeadsMain)
+
+    buildType(DotNetTestsSamples_Build)
+})
+
+object DotNetTestsSamples_Build : BuildType({
+    name = "Build"
+
+    vcs {
+        root(DotNetTestsSamples_HttpsGithubComChubatovatigerDotnettestssamplesGitRefsHeadsMain)
+    }
+
+    triggers {
+        vcs {
+        }
+    }
+
+    features {
+        perfmon {
+        }
+    }
+})
+
+object DotNetTestsSamples_HttpsGithubComChubatovatigerDotnettestssamplesGitRefsHeadsMain : GitVcsRoot({
+    name = "https://github.com/chubatovatiger/dotnettestssamples.git#refs/heads/main"
+    url = "https://github.com/chubatovatiger/dotnettestssamples.git"
+    branch = "refs/heads/main"
+    branchSpec = "refs/heads/*"
+    param("secure:password", "")
+    param("username", "")
 })
