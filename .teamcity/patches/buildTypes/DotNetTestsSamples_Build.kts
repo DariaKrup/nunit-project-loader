@@ -3,6 +3,7 @@ package patches.buildTypes
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetBuild
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.ui.*
 
@@ -17,6 +18,14 @@ create(RelativeId("DotNetTestsSamples"), BuildType({
 
     vcs {
         root(RelativeId("DotNetTestsSamples_HttpsGithubComChubatovatigerDotnettestssamplesGitRefsHeadsMain"))
+    }
+
+    steps {
+        dotnetBuild {
+            id = "dotnet"
+            projects = "dotnettests.sln"
+            sdk = "7"
+        }
     }
 
     triggers {
