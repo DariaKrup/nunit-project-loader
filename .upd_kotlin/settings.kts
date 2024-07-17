@@ -105,6 +105,7 @@ object DotNetTestsSamples_HttpsGithubComChubatovatigerDotnettestssamplesGitRefsH
     url = "https://github.com/chubatovatiger/dotnettestssamples.git"
     branch = "refs/heads/main"
     branchSpec = "refs/heads/*"
-    param("secure:password", "")
-    param("username", "")
+    authMethod = password {
+        password = "credentialsJSON:7dfcbd69-cb10-4446-8733-42c14a045427"
+    }
 })
