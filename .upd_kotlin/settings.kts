@@ -79,6 +79,16 @@ object DotNetTestsSamples_Build : BuildType({
         root(DotNetTestsSamples_HttpsGithubComChubatovatigerDotnettestssamplesGitRefsHeadsMain)
     }
 
+    steps {
+        powerShell {
+            id = "jetbrains_powershell"
+            scriptMode = file {
+                path = "TestProject1/generateTests.ps1"
+            }
+            noProfile = false
+        }
+    }
+
     triggers {
         vcs {
         }
