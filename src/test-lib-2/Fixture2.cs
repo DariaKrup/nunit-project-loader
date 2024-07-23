@@ -57,7 +57,7 @@ namespace test_lib_2
             Assert.Inconclusive();
         }
 
-        [Test, Ignore("Because")]
+        [Test, Explicit]
         public void TestMethod8() { }
 
         [Test, Ignore("Reason")]
