@@ -78,7 +78,7 @@ object Test : BuildType({
     steps {
         script {
             id = "simpleRunner"
-            scriptContent = "ee"
+            scriptContent = "echo %KEK%"
         }
     }
 })
