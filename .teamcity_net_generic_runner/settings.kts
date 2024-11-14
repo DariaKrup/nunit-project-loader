@@ -71,6 +71,10 @@ object Build : BuildType({
 object Test : BuildType({
     name = "Test"
 
+    params {
+        param("KEK", "%teamcity.agent.hardware.cpuCount%")
+    }
+
     steps {
         script {
             id = "simpleRunner"
